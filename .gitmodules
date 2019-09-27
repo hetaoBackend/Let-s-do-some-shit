@@ -1,0 +1,3 @@
+[submodule "algorithm/pageRank/pagerank"]
+	path = algorithm/pageRank/pagerank
+	url = https://github.com/louridas/pagerank.git
