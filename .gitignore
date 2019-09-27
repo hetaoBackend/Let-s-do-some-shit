@@ -13,3 +13,5 @@ __pycache__/
 *.dll
 *.so
 *.dylib
+.idea/
+server/dockerfiles/mysqldata

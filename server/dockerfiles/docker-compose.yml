@@ -1,0 +1,23 @@
+version: '2.1'
+services:
+  github_infos_db:
+    build:
+      context: ./
+      dockerfile: dockerfile_db
+    image: github_infos_db
+    hostname: github_infos_db
+    container_name: github_infos_db
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_DATABASE=github_infos
+    volumes:
+      - "./mysqldata:/var/lib/mysql"
+    restart: on-failure
+    healthcheck:
+      test: ["CMD", "mysql", "-u", "root"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    ports:
+      - 13306:3306
+
