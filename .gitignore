@@ -1,4 +1,10 @@
+# frontend 
 ./client/node_modules
+
+# algorithm
+algorithm/codeQuality/kafka
+
+# backend
 __pycache__/
 *.py[cod]
 *$py.class
