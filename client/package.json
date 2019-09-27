@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.4.3",
     "echarts": "^4.3.0",
     "echarts-for-react": "^2.0.15-beta.0",
     "lodash.clonedeep": "^4.5.0",

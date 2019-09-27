@@ -3,7 +3,7 @@ import { Input, Typography, Button, CardContent, Card } from '@material-ui/core'
 
 
 
-export default class Login extends Component {
+export default class Dashboard extends Component {
     constructor() {
         super();
 
@@ -45,8 +45,6 @@ export default class Login extends Component {
     render() {
 
         return (
-        <div style={{ position:"fixed", marginLeft: "30vw", width: "70%", marginTop: '35vh', overflow: "hidden" }} className="dashboard valign-wrapper">
-
             <div style={{ height: "30vh", display: "flex", flexDirection: "row" }}>
                 <Card style={{ backgroundColor: "rgb(58, 65, 73)", padding: "1rem", borderTopRightRadius: 0, borderBottomRightRadius: 0, borderTopLeftRadius: 10, borderBottomLeftRadius: 10, width: "20vw" }}>
                     <CardContent>
@@ -77,7 +75,6 @@ export default class Login extends Component {
                         </div>
                     </CardContent>
                 </Card>
-            </div>
             </div>
         );
     }
