@@ -1,1 +1,9 @@
 ./client/node_modules
+__pycache__/
+*.py[cod]
+*$py.class
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
