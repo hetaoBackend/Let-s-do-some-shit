@@ -1,13 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { PureComponent } from 'react';
+import { Link } from 'react-router'
+import Graph from './components/charts/Graph.js';
+import Login from './components/Login';
 
-function App() {
-  return (
-<div>
-  Don't really know what to do yet ...
-</div>
-  );
+import './index.css';
+
+export default class App extends PureComponent {
+  render() {
+    const { params, children } = this.props;
+    return (
+      <div>
+        {/* { children || <Graph /> } */}
+      </div>
+    );
+  }
 }
-
-export default App;
