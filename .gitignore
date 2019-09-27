@@ -1,4 +1,15 @@
+# frontend 
 ./client/node_modules
 
-# algorithm part
+# algorithm
 algorithm/codeQuality/kafka
+
+# backend
+__pycache__/
+*.py[cod]
+*$py.class
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
