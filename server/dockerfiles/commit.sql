@@ -1,10 +1,11 @@
-create table `commit`
-(
-	id int(11) unsigned auto_increment
-		primary key,
-	commit_sha varchar(50) not null,
-	commit_msg varchar(100) not null,
-	commit_total int(11) not null,
-	user_name varchar(50) not null default "",
-	repo varchar(100) not null default ""
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `commit` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `commit_sha` varchar(50) NOT NULL,
+  `commit_msg` varchar(100) NOT NULL DEFAULT '',
+  `commit_total` int(11) NOT NULL,
+  `user_name` varchar(50) NOT NULL DEFAULT '',
+  `repo` varchar(100) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `commit_commit_sha_uindex` (`commit_sha`)
+) ENGINE=InnoDB AUTO_INCREMENT=8138 DEFAULT CHARSET=utf8
+

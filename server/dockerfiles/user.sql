@@ -1,12 +1,11 @@
-create table `user`
-(
-	id int(11) unsigned auto_increment
-		primary key,
-	name varchar(50) not null,
-	contact varchar(50) not null default "",
-	location varchar (50) not null default "",
-	follower varchar(5000) not null default "",
-	following varchar(5000) not null default "",
-	commit_ids varchar(5000) not null default "",
-	followers_num int(11) not null default 0
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `user` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `company` varchar(50) NOT NULL DEFAULT '',
+  `location` varchar(50) NOT NULL DEFAULT '',
+  `following` varchar(20000) NOT NULL DEFAULT '',
+  `followers_num` int(11) NOT NULL DEFAULT '0',
+  `total_repo_num` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=116 DEFAULT CHARSET=utf8
+
