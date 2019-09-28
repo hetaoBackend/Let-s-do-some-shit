@@ -1,12 +1,22 @@
 import json
+import pymysql
 from flask import Blueprint
-from server.app.config import cursor, obj, default,auth
+from server.app.config import obj, default, auth
 
 dashboard = Blueprint('dashboard',__name__)
+
+github_infos_db = pymysql.connect(host='127.0.0.1',
+                             port=13306,
+                             user='teamname',
+                             password='teamname',
+                             db='github_infos',
+                             charset='utf8')
+cursor = github_infos_db.cursor()
 
 @dashboard.route('/', methods=['GET'])
 # @auth.login_required
 def get_user_list():
+    github_infos_db.ping(reconnect=True)
 
     test = obj()
     _dict = {}
@@ -21,14 +31,14 @@ def get_user_list():
     results = cursor.fetchall()
     for row in results:
         user_name = row[0]
-        query = "select followers_num, total_repo_num, following from user where name = '%s'"%user_name
+        query = "select followers_num, total_repo_num, following, page_rank_score from user where name = '%s'"%user_name
         cursor.execute(query)
         res = cursor.fetchone()
         if not res:
             continue
         # ToDo: how to calculate the value
-        value = int(res[0]*10+res[1])
-        test.nodes.append({"name": user_name, "value": value, "category": 0})
+        value = int(res[0]*5+res[1]+res[3]*2)
+        test.nodes.append({"name": user_name, "value": value, "symbolSize": 5+ (5+ value//5)%20, "category": 0})
         _dict[user_name] = res[2].split(",")
         demo_user.append(user_name)
 
@@ -44,7 +54,7 @@ def get_user_list():
             continue
         # ToDo: how to calculate the value
         value = int(res[0] * 10 + res[1])
-        test.nodes.append({"name": user_name, "value": value, "category": 1})
+        test.nodes.append({"name": user_name, "value": value, "symbolSize": 5+ (5+ value//5)%20, "category": 1})
         _dict[user_name] = res[2].split(",")
         demo_user.append(user_name)
 
@@ -60,7 +70,7 @@ def get_user_list():
             continue
         # ToDo: how to calculate the value
         value = int(res[0] * 10 + res[1])
-        test.nodes.append({"name": user_name, "value": value, "category": 2})
+        test.nodes.append({"name": user_name, "value": value, "symbolSize":  5+ (5+ value//5)%20, "category": 2})
         _dict[user_name] = res[2].split(",")
         demo_user.append(user_name)
     print("The number of demo_user is %s" % len(demo_user))
@@ -71,4 +81,5 @@ def get_user_list():
                 test.links.append({"source": demo_user.index(key), "target": demo_user.index(dd)})
 
     res = json.dumps(test, default=default)
+    github_infos_db.close()
     return res

@@ -3,7 +3,7 @@
 from github import Github
 import pymysql
 
-db = pymysql.connect(host='localhost',
+db = pymysql.connect(host='127.0.0.1',
                              port=13306,
                              user='teamname',
                              password='teamname',
@@ -12,12 +12,13 @@ db = pymysql.connect(host='localhost',
 cursor = db.cursor()
 
 def get_commit_infos():
+    db.ping(reconnect=True)
     g = Github("d1fc35107b9be23d0208cbe6628e65312a83a5a6")
     repos = []
     # repos.append(g.get_repo("elastic/elasticsearch-hadoop"))
     repos.append(g.get_repo("elastic/elasticsearch"))
     # repos.append(g.get_repo("elastic/elasticsearch-metrics-reporter-java"))
-    offset = 202
+    offset = 252
     for repo in repos:
         commits = repo.get_commits()
         for i in range(offset, offset+50):

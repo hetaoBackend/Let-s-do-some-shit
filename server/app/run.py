@@ -6,7 +6,7 @@ from passlib.apps import custom_app_context as pwd_context
 from itsdangerous import (TimedJSONWebSignatureSerializer
                           as Serializer, BadSignature, SignatureExpired)
 from flask_login import (login_user,logout_user, LoginManager, UserMixin, current_user)
-from server.app.config import auth
+from server.app.config import auth, search_data
 from server.app.dashboard import dashboard
 from server.app.user import user
 from flask_cors import CORS
@@ -95,7 +95,7 @@ def new_user():
     projectEngagement = request.json.get('projectEngagement')
     communicationSkill = request.json.get('communicationSkill')
     innovationProcentage = request.json.get('innovationProcentage')
-    adaptability = request.json.get('adaptability')
+    adaptability = request.json.get(' ')
     print(email, password, preferedName, technicalSkill, projectEngagement, communicationSkill, innovationProcentage, adaptability)
     if preferedName is None or password is None or email is None or technicalSkill is None or projectEngagement is None or communicationSkill is None or innovationProcentage is None or adaptability is None:
         abort(400)    # missing arguments
@@ -135,6 +135,48 @@ def login():
 def logout():
     logout_user()
     return "logout page"
+
+@app.route('/profile/change', methods=['POST'])
+def change_user():
+    email = request.json.get('email')
+    technicalSkill = request.json.get('technicalSkill')
+    projectEngagement = request.json.get('projectEngagement')
+    communicationSkill = request.json.get('communicationSkill')
+    innovationProcentage = request.json.get('innovationProcentage')
+    adaptability = request.json.get('adaptability')
+    if email is None:
+        abort(400)    # missing arguments
+    if User.query.filter_by(username=email).first() is None:
+        abort(400)    # existing user
+    user = User.query.filter_by(username=email).first()
+    print(user.weights, user.username)
+    user.weights = ",".join(list(map(str, [technicalSkill, projectEngagement, communicationSkill, innovationProcentage, adaptability])))
+    db.session.commit()
+    return (jsonify({'username': user.username}), 201,
+            {'Location': url_for('get_user', id=user.id, _external=True)})
+
+@app.route('/weights', methods=['POST'])
+# @auth.login_required
+def get_weights():
+    if not request.json or 'email' not in request.json:
+        abort(400)
+    email = request.json.get('email')
+    print(email)
+    user = User.query.filter_by(username=email).first()
+    if not user:
+        abort(400)
+    print({'weights': user.weights, 'preferedName': user.preferedName})
+    return jsonify({'weights': user.weights, 'preferedName': user.preferedName})
+
+@app.route('/search', methods=['GET'])
+# @auth.login_required
+def search():
+    if not request.args or 'query' not in request.args:
+        abort(400)
+    query = request.args.get('query')
+    if query not in search_data:
+        abort(400)
+    return jsonify(search_data[query])
 
 
 @app.route('/api/token')

@@ -1,6 +1,6 @@
 import pymysql
 
-db = pymysql.connect(host='172.16.199.75',
+db = pymysql.connect(host='127.0.0.1',
                      port=13306,
                      user='teamname',
                      password='teamname',
@@ -11,6 +11,7 @@ cursor = db.cursor()
 
 
 def generate_data():
+    db.ping(reconnect=True)
     with open("user_name.txt", "r") as txt_file:
         user = list(txt_file)
     user = [name.replace("\n", "") for name in user]

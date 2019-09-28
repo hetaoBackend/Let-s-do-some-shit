@@ -2,7 +2,7 @@ import json
 import pymysql
 import os
 
-db = pymysql.connect(host='172.16.199.75',
+db = pymysql.connect(host='127.0.0.1',
                      port=13306,
                      user='teamname',
                      password='teamname',
@@ -13,7 +13,7 @@ cursor = db.cursor()
 
 
 def msg_scores():
-    print(os.getcwd())
+    db.ping(reconnect=True)
     with open("tone_score.json", 'r') as load_f:
         load_dict = json.load(load_f)
         print(load_dict)
