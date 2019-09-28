@@ -4,6 +4,7 @@ import Login from './components/Login'
 
 import Register from './components/Register.js';
 import Dashboard from './components/Dashboard.js';
+import Logout from './components/Logout.js';
 
 // The Main component renders one of the three provided
 // Routes (provided that one matches). Both the /roster
@@ -17,6 +18,7 @@ const Main = () => (
       <Route exact path='/' component={Login}/> 
       <Route path='/register' component={Register}/>
       <Route path='/dashboard' component={Dashboard}/>
+      <Route path='/logout' component={Logout}/>
     </Switch>
   </main>
 )

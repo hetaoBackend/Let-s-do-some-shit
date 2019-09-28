@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Input, Typography, Button, CardContent, Card } from '@material-ui/core';
 // add the router and add the stuf to change the 2 blocks in the start so that you can register either as a developer or as a recruiter
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
+import axios from "axios";
+import {setCookie, getCookie, eraseCookie} from "./CookieFunctions.js";
 
 
 export default class Login extends Component {
@@ -17,19 +18,22 @@ export default class Login extends Component {
     }
     onRegister () {
         window.location.href = "./register";
+        // console.log(getCookie("token"));
     }
     componentWillMount() {
         // If logged in and user navigates to Register page, should redirect them to dashboard
         // Check the name in frontend
-        if (false) {
-            window.location.href = './dashboard';
-        }
+
+    //     if (getCookie("token") !== null) {
+    //         window.location.href = './dashboard';
+    //     }
+    // }
     }
 
     componentWillReceiveProps(nextProps) {
-        if (false) {
-            window.location.href = './dashboard';
-        }
+        // if (getCookie("token") !== null) {
+        //     window.location.href = './dashboard';
+        // }
     }
 
     onChange = e => {
@@ -40,11 +44,39 @@ export default class Login extends Component {
         e.preventDefault();
 
         const userData = {
-            email: this.state.email,
+            username: this.state.email,
             password: this.state.password
         };
-        if (true)
-            window.location.href = './dashboard';
+        // var ret = axios.post({
+        //     baseUrl: "http://172.16.199.75:5000",
+        //     url: "login",
+        //     data: {userData},
+        //   });
+        // const instance = axios.create({
+        //     baseURL: 'https://some-domain.com/api/',
+        //     timeout: 1000,
+        //     headers: {'X-Custom-Header': 'foobar'}
+        //   });
+        //   instance
+        axios({
+            method: 'POST',
+            responseType:'application/json',
+            url: "http://172.16.199.75:5000/login",
+            data: {
+                    username : userData.username,
+                    password: userData.password
+            },
+          }).then((e) => {
+              console.log(e.data);
+              setCookie("token", e.data.token, 10);
+              setCookie("username", this.state.email, 10);
+                
+              
+          }
+          ).catch(function (error) {
+            console.log(error);
+          });
+        //   console.log(ret);
 
         // this.props.loginUser(userData);
     };

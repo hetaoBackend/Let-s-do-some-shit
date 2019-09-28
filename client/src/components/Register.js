@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Input, Typography, Button, CardContent, Card, Slider } from '@material-ui/core';
 // this needs to be renamed to signup as a recruiter
 // This can be the update preferences stuff as well
+import axios from "axios";
+import {setCookie, getCookie, eraseCookie} from "./CookieFunctions.js";
+
 
 
 
@@ -28,7 +31,32 @@ export default class Register extends Component {
     
     onSubmit = e => {
         console.log(this.state);
-        window.location.href = "./dashboard";
+        axios({
+            method: 'POST',
+            responseType:'application/json',
+            url: "http://172.16.199.75:5000/register",
+            data: {
+                    email : this.state.email,
+                    password: this.state.password,
+                    preferedName: this.state.preferedName,
+                    technicalSkill: this.state.technicalSkill,
+                    projectEngagement: this.state.projectEngagement,
+                    communicationSkill: this.state.communicationSkill,
+                    innovationProcentage: this.state.innovationProcentage,
+                    adaptability: this.state.adaptability,
+
+            },
+          }).then((e) => {
+            //   console.log(e.data);
+              window.location.href = "./";
+            //   setCookie("token", e.data.token, 10);
+          }
+          ).catch(function (error) {
+            console.log(error);
+          });
+          console.log("we have made some improvement")
+        // 
+
         // send the state to the server
         // ################################
         // ################################

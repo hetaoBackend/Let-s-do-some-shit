@@ -3,6 +3,7 @@ import { Input, Typography, Button, CardContent, Card, Slider } from '@material-
 // this needs to be renamed to signup as a recruiter
 // This can be the update preferences stuff as well
 import Graph from "./charts/Graph";
+import { getCookie } from './CookieFunctions';
 
 
 export default class Register extends Component {
@@ -12,6 +13,11 @@ export default class Register extends Component {
         this.state = {
           
         };
+    }
+    componentWillMount () {
+        console.log(getCookie("token"))
+        if (getCookie("token") === null)
+        window.location.href = "./";
     }
     onChange = e => {
         this.setState({ [e.target.id]: e.target.value }); 
