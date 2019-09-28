@@ -95,7 +95,7 @@ def new_user():
     projectEngagement = request.json.get('projectEngagement')
     communicationSkill = request.json.get('communicationSkill')
     innovationProcentage = request.json.get('innovationProcentage')
-    adaptability = request.json.get('adaptability')
+    adaptability = request.json.get(' ')
     print(email, password, preferedName, technicalSkill, projectEngagement, communicationSkill, innovationProcentage, adaptability)
     if preferedName is None or password is None or email is None or technicalSkill is None or projectEngagement is None or communicationSkill is None or innovationProcentage is None or adaptability is None:
         abort(400)    # missing arguments
@@ -136,6 +136,24 @@ def logout():
     logout_user()
     return "logout page"
 
+@app.route('/profile/change', methods=['POST'])
+def change_user():
+    email = request.json.get('email')
+    technicalSkill = request.json.get('technicalSkill')
+    projectEngagement = request.json.get('projectEngagement')
+    communicationSkill = request.json.get('communicationSkill')
+    innovationProcentage = request.json.get('innovationProcentage')
+    adaptability = request.json.get('adaptability')
+    if email is None:
+        abort(400)    # missing arguments
+    if User.query.filter_by(username=email).first() is None:
+        abort(400)    # existing user
+    user = User.query.filter_by(username=email).first()
+    print(user.weights, user.username)
+    user.weights = ",".join(list(map(str, [technicalSkill, projectEngagement, communicationSkill, innovationProcentage, adaptability])))
+    db.session.commit()
+    return (jsonify({'username': user.username}), 201,
+            {'Location': url_for('get_user', id=user.id, _external=True)})
 
 @app.route('/weights', methods=['POST'])
 # @auth.login_required
