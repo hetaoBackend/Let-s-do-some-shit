@@ -10,8 +10,7 @@ export default class Register extends Component {
         super();
 
         this.state = {
-            open: false,
-            name: "",
+          
         };
     }
     onChange = e => {
@@ -22,9 +21,6 @@ export default class Register extends Component {
         this.setState({ ["open"]: true }); 
         // send the state to the server
     }
-    handleClose = () => {
-        this.setState({["open"]: false});
-      };
 
     render() {
 

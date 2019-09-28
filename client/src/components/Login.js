@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Input, Typography, Button, CardContent, Card } from '@material-ui/core';
 // add the router and add the stuf to change the 2 blocks in the start so that you can register either as a developer or as a recruiter
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 
 
@@ -14,7 +15,9 @@ export default class Login extends Component {
             errors: {}
         };
     }
-
+    onRegister () {
+        window.location.href = "./register";
+    }
     componentWillMount() {
         // If logged in and user navigates to Register page, should redirect them to dashboard
         // Check the name in frontend
@@ -40,6 +43,8 @@ export default class Login extends Component {
             email: this.state.email,
             password: this.state.password
         };
+        if (true)
+            window.location.href = './dashboard';
 
         // this.props.loginUser(userData);
     };
@@ -74,7 +79,7 @@ export default class Login extends Component {
                         <Typography variant="h5" component="h2" color="textSecondary" gutterBottom>SignUp</Typography>
                         <Typography variant="body2" color="textSecondary" component="p">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer</Typography>
                         <div>
-                            <Button style={{color:"white", width:"19rem", backgroundColor: "#3A4149", margin: "3.7em 0 1rem 0rem" }}>Register</Button>
+                            <Button onClick={this.onRegister} style={{color:"white", width:"19rem", backgroundColor: "#3A4149", margin: "3.7em 0 1rem 0rem" }}>Register</Button>
                         </div>
                     </CardContent>
                 </Card>

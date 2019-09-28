@@ -28,6 +28,7 @@ export default class Register extends Component {
     
     onSubmit = e => {
         console.log(this.state);
+        window.location.href = "./dashboard";
         // send the state to the server
         // ################################
         // ################################
