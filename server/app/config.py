@@ -4,7 +4,7 @@ import pymysql
 from flask_httpauth import HTTPBasicAuth
 auth = HTTPBasicAuth()
 
-github_infos_db = pymysql.connect(host='localhost',
+github_infos_db = pymysql.connect(host='172.16.199.75',
                              port=13306,
                              user='teamname',
                              password='teamname',

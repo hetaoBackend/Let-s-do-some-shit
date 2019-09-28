@@ -7,7 +7,7 @@ user = Blueprint('user',__name__)
 
 
 @user.route('/', methods=['GET'])
-@auth.login_required
+# @auth.login_required
 def get_user():
     if not request.args or 'user_name' not in request.args:
         abort(400)

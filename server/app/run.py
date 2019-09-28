@@ -7,14 +7,15 @@ from itsdangerous import (TimedJSONWebSignatureSerializer
                           as Serializer, BadSignature, SignatureExpired)
 from flask_login import (login_user,logout_user, LoginManager, UserMixin, current_user)
 from server.app.config import auth
-from server.app.user_list import user_list
+from server.app.dashboard import dashboard
 from server.app.user import user
-
+from flask_cors import CORS
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'the quick brown fox jumps over the lazy dog'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
+CORS(app, supports_credentials=True)
 
 db = SQLAlchemy(app)
 login_manager = LoginManager()
@@ -27,6 +28,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(32), index=True)
     password_hash = db.Column(db.String(64))
     weights = db.Column(db.String(500))
+    preferedName = db.Column(db.String(100))
 
     def hash_password(self, password):
         self.password_hash = pwd_context.encrypt(password)
@@ -84,16 +86,22 @@ def verify_password(username_or_token, password):
     return True
 
 
-@app.route('/api/users/', methods=['GET'])
+@app.route('/register', methods=['POST'])
 def new_user():
-    username = request.args.get('username')
-    password = request.args.get('password')
-    weights = request.args.get('weights')
-    if username is None or password is None or weights is None:
+    email = request.json.get('email')
+    password = request.json.get('password')
+    preferedName = request.json.get('preferedName')
+    technicalSkill = request.json.get('technicalSkill')
+    projectEngagement = request.json.get('projectEngagement')
+    communicationSkill = request.json.get('communicationSkill')
+    innovationProcentage = request.json.get('innovationProcentage')
+    adaptability = request.json.get('adaptability')
+    print(email, password, preferedName, technicalSkill, projectEngagement, communicationSkill, innovationProcentage, adaptability)
+    if preferedName is None or password is None or email is None or technicalSkill is None or projectEngagement is None or communicationSkill is None or innovationProcentage is None or adaptability is None:
         abort(400)    # missing arguments
-    if User.query.filter_by(username=username).first() is not None:
+    if User.query.filter_by(username=email).first() is not None:
         abort(400)    # existing user
-    user = User(username=username, weights=weights)
+    user = User(username=email, preferedName=preferedName, weights=",".join(list(map(str, [technicalSkill, projectEngagement, communicationSkill, innovationProcentage, adaptability]))))
     user.hash_password(password)
     db.session.add(user)
     db.session.commit()
@@ -108,7 +116,7 @@ def get_user(id):
         abort(400)
     return jsonify({'username': user.username})
 
-@app.route('/login', methods=['GET','POST'])
+@app.route('/login', methods=['POST'])
 def login():
     username = request.json.get('username')
     password = request.json.get('password')
@@ -123,7 +131,7 @@ def login():
 
 
 @app.route('/logout', methods=['GET','POST'])
-@auth.login_required
+# @auth.login_required
 def logout():
     logout_user()
     return "logout page"
@@ -136,11 +144,11 @@ def get_auth_token():
     return jsonify({'token': token.decode('ascii'), 'duration': 600})
 
 
-app.register_blueprint(user_list, url_prefix='/user_list')
+app.register_blueprint(dashboard, url_prefix='/dashboard')
 app.register_blueprint(user, url_prefix='/user')
 
 
 if __name__ == '__main__':
     if not os.path.exists('db.sqlite'):
         db.create_all()
-    app.run(debug=True)
+    app.run('0.0.0.0', debug=True)

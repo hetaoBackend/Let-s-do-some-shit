@@ -1,4 +1,3 @@
-from github import Github
 import pymysql
 
 db = pymysql.connect(host='172.16.199.75',
