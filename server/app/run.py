@@ -176,6 +176,7 @@ def search():
     query = request.json.get('query')
     if query not in search_data:
         return jsonify({"code":"", "description":"", "link":""})
+    print(search_data[query])
     return jsonify(search_data[query])
 
 
