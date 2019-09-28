@@ -1,3 +1,6 @@
 [submodule "algorithm/pageRank/pagerank"]
 	path = algorithm/pageRank/pagerank
 	url = https://github.com/louridas/pagerank.git
+[submodule "algorithm/graphEmbedding/GraphEmbedding"]
+	path = algorithm/graphEmbedding/GraphEmbedding
+	url = https://github.com/shenweichen/GraphEmbedding.git

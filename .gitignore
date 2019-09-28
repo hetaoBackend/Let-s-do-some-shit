@@ -3,6 +3,7 @@
 
 # algorithm
 algorithm/codeQuality/kafka
+**/.DS_Store
 
 # backend
 __pycache__/
