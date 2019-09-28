@@ -9,10 +9,10 @@ user = Blueprint('user',__name__)
 @user.route('/', methods=['GET'])
 # @auth.login_required
 def get_user():
-    if not request.args or 'user_name' not in request.args:
+    if not request.args or 'username' not in request.args:
         abort(400)
     else:
-        user_name = request.args['user_name']
+        user_name = request.args['username']
         users, d1, d2, d3, d4, d5 = parse_five_domains()
         if user_name not in users:
             abort(400)
@@ -40,7 +40,6 @@ def parse_five_domains():
             length = len(tmp_list)
             user_name = " ".join(tmp_list[:length-7])
             followers_num, total_repo_num, pr_num, commit_num, tag_num, total_line_num, pr_score = list(map(int, tmp_list[length-7:]))
-            print(tag_num)
             d1.append(total_line_num * 0.01 + pr_num * 2)
             d2.append(pr_score)
             d3.append(10*tag_num+followers_num)

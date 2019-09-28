@@ -1,6 +1,6 @@
 import pymysql
 
-db = pymysql.connect(host='172.16.199.75',
+db = pymysql.connect(host='127.0.0.1',
                      port=13306,
                      user='teamname',
                      password='teamname',
