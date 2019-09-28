@@ -7,7 +7,7 @@ from itsdangerous import (TimedJSONWebSignatureSerializer
                           as Serializer, BadSignature, SignatureExpired)
 from flask_login import (login_user,logout_user, LoginManager, UserMixin, current_user)
 from server.app.config import auth
-from server.app.user_list import user_list
+from server.app.dashboard import dashboard
 from server.app.user import user
 from flask_cors import CORS
 
@@ -144,7 +144,7 @@ def get_auth_token():
     return jsonify({'token': token.decode('ascii'), 'duration': 600})
 
 
-app.register_blueprint(user_list, url_prefix='/user_list')
+app.register_blueprint(dashboard, url_prefix='/dashboard')
 app.register_blueprint(user, url_prefix='/user')
 
 

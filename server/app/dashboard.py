@@ -2,9 +2,9 @@ import json
 from flask import Blueprint
 from server.app.config import cursor, obj, default,auth
 
-user_list = Blueprint('user_list',__name__)
+dashboard = Blueprint('dashboard',__name__)
 
-@user_list.route('/', methods=['GET'])
+@dashboard.route('/', methods=['GET'])
 # @auth.login_required
 def get_user_list():
 
@@ -63,7 +63,7 @@ def get_user_list():
         test.nodes.append({"name": user_name, "value": value, "category": 2})
         _dict[user_name] = res[2].split(",")
         demo_user.append(user_name)
-    print(len(demo_user))
+    print("The number of demo_user is %s" % len(demo_user))
 
     for key in _dict:
         for dd in demo_user:
