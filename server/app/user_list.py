@@ -5,7 +5,7 @@ from server.app.config import cursor, obj, default,auth
 user_list = Blueprint('user_list',__name__)
 
 @user_list.route('/', methods=['GET'])
-@auth.login_required
+# @auth.login_required
 def get_user_list():
 
     test = obj()
