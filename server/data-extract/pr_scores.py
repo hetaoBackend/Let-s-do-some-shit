@@ -13,7 +13,7 @@ cursor = db.cursor()
 
 
 def msg_scores():
-    print(os.getcwd())
+    db.ping(reconnect=True)
     with open("tone_score.json", 'r') as load_f:
         load_dict = json.load(load_f)
         print(load_dict)

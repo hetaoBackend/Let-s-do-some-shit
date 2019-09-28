@@ -12,6 +12,7 @@ cursor = db.cursor()
 
 
 def get_user_infos():
+    db.ping(reconnect=True)
     g = Github("608e938ca68704dffac199b91ac3be66507e2518")
     with open("user_name.txt", "r") as txt_file:
         user = list(txt_file)

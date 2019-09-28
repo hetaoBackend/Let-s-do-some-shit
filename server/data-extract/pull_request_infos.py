@@ -12,6 +12,7 @@ db = pymysql.connect(host='localhost',
 cursor = db.cursor()
 
 def get_repo_infos():
+    db.ping(reconnect=True)
     g = Github("d1fc35107b9be23d0208cbe6628e65312a83a5a6")
     repos = []
     repos.append(g.get_repo("elastic/elasticsearch-hadoop"))
