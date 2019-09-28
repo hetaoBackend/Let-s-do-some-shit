@@ -137,6 +137,18 @@ def logout():
     return "logout page"
 
 
+@app.route('/weights', methods=['GET'])
+# @auth.login_required
+def get_weights():
+    if not request.args or 'email' not in request.args:
+        abort(400)
+    email = request.args.get('email')
+    user = User.query.filter_by(username=email).first()
+    if not user:
+        abort(400)
+    return jsonify({'weights': user.weights, 'preferedName': user.preferedName})
+
+
 @app.route('/api/token')
 @auth.login_required
 def get_auth_token():
