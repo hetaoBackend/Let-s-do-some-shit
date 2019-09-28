@@ -6,6 +6,9 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 
 import './index.css';
+// import Dashboard from './components/Register.js/index.js';
+import Register from './components/Register.js';
+import Dashboard from './components/Dashboard.js';
 
 export default class App extends PureComponent {
 
@@ -15,7 +18,7 @@ export default class App extends PureComponent {
     return (
     <div>
         <img style={{zIndex:"-10", position:"fixed", width:"100vw", height:"100vh"}} src={Bg} alt="backGround"/> 
-        <Login/>
+        <Dashboard/>
     </div>
     );
   }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Input, Typography, Button, CardContent, Card } from '@material-ui/core';
+// add the router and add the stuf to change the 2 blocks in the start so that you can register either as a developer or as a recruiter
 
 
 
