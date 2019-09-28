@@ -1,0 +1,12 @@
+FROM mysql:5.7
+
+# github_infos DB:
+COPY *.sql /docker-entrypoint-initdb.d/
+#DB users:
+RUN echo "CREATE USER 'teamname'@'%' IDENTIFIED BY 'teamname';\n\
+GRANT ALL PRIVILEGES ON *.* TO 'teamname'@'%';\n\
+FLUSH PRIVILEGES;\n" > /docker-entrypoint-initdb.d/user_privileges.sql
+
+ENTRYPOINT ["docker-entrypoint.sh"]
+EXPOSE 3306
+CMD ["mysqld", "--sql_mode=NO_ENGINE_SUBSTITUTION"]
