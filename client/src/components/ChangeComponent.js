@@ -8,7 +8,7 @@ import {setCookie, getCookie, eraseCookie} from "./CookieFunctions.js";
 
 
 
-export default class Register extends Component {
+export default class ChangeComponent extends Component {
     constructor() {
         super();
 
@@ -34,11 +34,9 @@ export default class Register extends Component {
         axios({
             method: 'POST',
             responseType:'application/json',
-            url: "http://10.0.50.126:5000/register",
+            url: "http://10.0.50.126:5000/profile/change",
             data: {
-                    email : this.state.email,
-                    password: this.state.password,
-                    preferedName: this.state.preferedName,
+                    email : getCookie("username"),
                     technicalSkill: this.state.technicalSkill,
                     projectEngagement: this.state.projectEngagement,
                     communicationSkill: this.state.communicationSkill,
@@ -48,48 +46,25 @@ export default class Register extends Component {
             },
           }).then((e) => {
             //   console.log(e.data);
-              window.location.href = "./";
+              window.location.href = "./dashboard";
             //   setCookie("token", e.data.token, 10);
           }
           ).catch(function (error) {
             console.log(error);
           });
           console.log("we have made some improvement")
-        // 
 
-        // send the state to the server
-        // ################################
-        // ################################
-        // ################################
-        // ################################
-        // ################################
     }
 
     render() {
 
         return (
             <div style={{ marginLeft:"5vw", marginTop:"5vh", height: "30vh", display: "flex", flexDirection: "row" }}>
-                <Card style={{height:"90vh", backgroundColor: "rgb(58, 65, 73)", padding: "1rem", width: "90vw" }}>
+                <Card style={{height:"60vh", backgroundColor: "rgb(58, 65, 73)", padding: "1rem", width: "60vw" }}>
                     <CardContent>
-                        <Typography variant="h5" component="h2" style={{ color: "white" }} gutterBottom>Preferences</Typography>
+                        <Typography variant="h5" component="h2" style={{ color: "white" }} gutterBottom>Change Preferences</Typography>
                         <div style={{display:"flex", flexDirection:"column"}}> 
-                        <Input onChange={this.onChange} style={{marginTop:"40px", color: "white" }}
-                            value={this.state.email}
-                            id="email"
-                            type="email"
-                            placeholder="Username" />
-                        <Input onChange={this.onChange} style={{marginTop:"40px", color: "white" }}
-                            value={this.state.password}
-                            id="password"
-                            type="password"
-                            placeholder="Password" />
-                        <Input onChange={this.onChange} style={{marginTop:"40px", color: "white" }}
-                            value={this.state.preferedName}
-                            id="preferedName"
-                            type="text"
-                            placeholder="Prefered Name" />
                         
-                        <Typography variant="h5" component="h2" style={{ marginTop:"3rem",color: "white" }} gutterBottom>What you value?</Typography>
 
                         <Slider
                             defaultValue={5}
@@ -149,7 +124,7 @@ export default class Register extends Component {
                      
                         </div>
                       
-                        <Button type="submit" onClick={this.onSubmit} style={{ left:"100px", width:"19rem", backgroundColor: "#5C20D8", marginLeft:"70rem", marginTop:"5em" }}>Submit</Button>
+                        <Button type="submit" onClick={this.onSubmit} style={{ position:"fixed", left:"18vw", top:"70vh", backgroundColor: "#5C20D8", marginLeft:"70rem", marginTop:"5em" }}>Submit</Button>
                     </CardContent>
                 </Card>
             </div>

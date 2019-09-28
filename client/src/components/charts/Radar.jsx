@@ -2,38 +2,123 @@ import React, { Component } from 'react';
 import { Input, Typography, Button, CardContent, Card, Slider } from '@material-ui/core';
 // this needs to be renamed to signup as a recruiter
 // This can be the update preferences stuff as well
-
+import axios from "axios"; 
 import ReactEcharts from 'echarts-for-react';  // or var ReactEcharts = require('echarts-for-react');
+import { getCookie } from '../CookieFunctions';
 
 
 export default class Radar extends Component {
-    constructor() {
-        super();
 
+    constructor(props) {
+        
+        super(props);
+// console.log(this.props);
         this.state = {
-            email: "",
-            password: "",
-            errors: {},
-            preferedName: "",
-            technicalSkill: 0,
-            projectEngagement: 0,
-            communicationSkill: 0,
-            innovationProcentage: 0,
-            adaptability: 0,
-
+            name: this.props.nume,
+            data: null,
+            weights: null,
+            username: this.props.username,
+            url: null
         };
     }
+
+
     onChange = e => {
         this.setState({ [e.target.id]: e.target.value }); 
     }
     getOption = () => {
+        var a;
+        // console.log(this.state.data);
+        if (this.state.data === null || this.state.data === undefined) {
+            // if (this.state.name === "")
+            //     return null
+
+            axios({
+            method: 'POST',
+            responseType:'application/json',
+            // data: {
+            //     email: this.state.name
+            // },
+            // add the fucking email
+            // ####################
+            // ####################
+            // ####################
+            // ####################
+            url: "http://10.0.50.126:5000/weights",
+            data : {
+                email : (getCookie("username") === undefined) ? "tibi1" : getCookie("username")
+            },
+            }).then((e) => {
+                // console.log(e.data);
+                a = e.data;
+                this.setState({
+                    name: this.state.name,
+                    data: a,
+                    weights: this.state.weights,
+                    url: this.state.url,
+                    username: this.state.username
+                });
+                // console.log(this.state);
+            }
+            ).catch(function (error) {
+            console.log(error);
+            });
+
+            
+            return null;
+        }
+        if (this.state.weights === null || this.state.weights == undefined || this.state.weights === "") {
+            
+            var dd;
+            var urll;
+            axios({
+                method: 'POST',
+                responseType:'application/json',
+                url: "http://10.0.50.126:5000/user/",
+                data: {
+                    username: this.props.username
+                }
+            }).then((e) => {
+                // console.log(e.data);
+                dd = e.data;
+                // console.log(e.data);
+                this.setState({name:getCookie("username"),
+                    data: this.state.data,
+                    weights: dd,
+                    username: this.props.username,
+                    name: this.props.nume,
+                    url: e.data.url 
+                });
+                // console.log(this.state);
+            }
+            ).catch(function (error) {
+                console.log(error);
+            });
+            }
+        // console.log(this.state.data);
+        if (this.state.data === null || this.state.data ==="")
+            return null;
+        if (this.state.data.weights === null || this.state.data.weights === undefined)
+            return null;
+        var b = this.state.data.weights.split(',').map(function(item) {
+            return parseInt(item, 10);
+        });
+        if (this.state.weights === null || this.state.weights === undefined)
+            return null;
+        // console.log(this.state.weights);
+        var c = Object.values(this.state.weights);
+        // var c = [1,2,3,4,5]
+        var bbb = [0,0,0,0,0]
+
+        for (let  i = 0 ; i < 5 ; i++)
+            bbb[i] = (c[i]  * 0.7) * (b[i] + 50) % 100 + 20;
         return {
             title: {
                 text: ''
             },
             tooltip: {},
             legend: {
-                data: ['预算分配（Allocated Budget）', '实际开销（Actual Spending）']
+                data: ['', this.state.name]
             },
             radar: {
                 // shape: 'circle',
@@ -46,26 +131,22 @@ export default class Radar extends Component {
                    }
                 },
                 indicator: [
-                   { name: '销售（sales）', max: 6500},
-                   { name: '管理（Administration）', max: 16000},
-                   { name: '信息技术（Information Techology）', max: 30000},
-                   { name: '客服（Customer Support）', max: 38000},
-                   { name: '研发（Development）', max: 52000},
-                   { name: '市场（Marketing）', max: 25000}
+                   { name: 'Techincal skill', max: 100},
+                   { name: 'Engagement', max: 100},
+                   { name: 'Communication Skills', max: 100},
+                   { name: 'Innovation Percentage', max: 100},
+                   { name: 'Adaptability', max: 100},
                 ]
             },
             series: [{
-                name: '预算 vs 开销（Budget vs spending）',
+                name: this.state.name,
                 type: 'radar',
                 areaStyle: {normal: {}},
                 data : [
+                    
                     {
-                        value : [4300, 10000, 28000, 35000, 50000, 19000],
-                        name : '预算分配（Allocated Budget）'
-                    },
-                     {
-                        value : [5000, 14000, 28000, 31000, 42000, 21000],
-                        name : '实际开销（Actual Spending）'
+                        value : bbb,
+                        name: "Developer Performance"
                     }
                 ]
             }]
@@ -82,17 +163,26 @@ export default class Radar extends Component {
             'legendselectchanged': this.onChartLegendselectchanged
           }
       
-
+        if (this.getOption() !== null) 
+          document.querySelector("#button1").addEventListener("click", () => { window.location.href = this.state.url; })
         return (
             
             <div style={{display:"flex", flexDirection:"row"}}>
+            {/* <div>
+            <h1>
+                Developer Radar
+            </h1>
+            </div> */}
+            {(this.getOption() === null) ? <div> </div> :
             <ReactEcharts
                 option={this.getOption()}
                 style={{padding:"10px", color:"white",height: '700px', width: '50%'}}
                 className='react_for_echarts'
                 onEvents={onEvents} 
             />
-            <h1> some list or chart here</h1>
+            }
+            {/* <h1> some list or chart here</h1> */}
+            {/* create some charts in there */}
 
             </div>
         );

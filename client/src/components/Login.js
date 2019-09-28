@@ -61,7 +61,7 @@ export default class Login extends Component {
         axios({
             method: 'POST',
             responseType:'application/json',
-            url: "http://172.16.199.75:5000/login",
+            url: "http://10.0.50.126:5000/login",
             data: {
                     username : userData.username,
                     password: userData.password
@@ -70,6 +70,9 @@ export default class Login extends Component {
               console.log(e.data);
               setCookie("token", e.data.token, 10);
               setCookie("username", this.state.email, 10);
+        window.location.href = "./dashboard";
+
+
                 
               
           }

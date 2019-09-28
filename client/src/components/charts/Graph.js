@@ -8,7 +8,8 @@ import Radar from "./Radar.jsx";
 
 
 
-import { Modal} from '@material-ui/core';
+
+import { Modal, Button} from '@material-ui/core';
 import axios from 'axios';
 import { getCookie } from '../CookieFunctions.js';
 import { nullLiteral } from '@babel/types';
@@ -20,6 +21,7 @@ export default class Graph extends Component {
       open: false,
       name: "",
       data: "{}",
+      weights: ""
     }
     this.handleClose = this.handleClose.bind(this);
     this.onChartClick = this.onChartClick.bind(this);
@@ -28,10 +30,11 @@ export default class Graph extends Component {
   
   getOption = () => {
     var a;
+    if (this.state.data === null || this.state.data === {} || this.state.data.nodes === undefined) {
     axios({
       method: 'GET',
       responseType:'application/json',
-      url: "http://172.16.199.75:5000/dashboard/",
+      url: "http://10.0.50.126:5000/dashboard/",
     }).then((e) => {
         console.log(e.data);
         a = e.data;
@@ -44,18 +47,22 @@ export default class Graph extends Component {
     ).catch(function (error) {
       console.log(error);
     });
-
-  if (this.state.data === null || a === undefined) 
+  }
+  if (this.state.data === null || this.state.data === {} || this.state.data.nodes === undefined) 
     return null;
   else
+  { console.log(this.state.data)
    return {
     legend: {
-      data: ['HTMLElement', 'WebGL', 'SVG', 'CSS', 'Other']
+      data: ["elasticsearch",
+      "elasticsearch-hadoop",
+      "elasticsearch-metrics-reporter-java"],
     },
     series: [{
       type: 'graph',
       layout: 'force',
-      animation: false,
+     
+      animation: true,
       label: {
         normal: {
           position: 'right',
@@ -63,20 +70,20 @@ export default class Graph extends Component {
         }
       },
       draggable: true,
-      data: a.nodes.map(function (node, idx) {
+      data: this.state.data.nodes.map(function (node, idx) {
         node.id = idx;
         return node;
       }),
-      categories: a.data.categories,
+      categories: this.state.data.categories,
       force: {
         // initLayout: 'circular'
         // repulsion: 20,
-        edgeLength: 5,
-        repulsion: 20,
-        gravity: 0.2
+        edgeLength: 13,
+        repulsion: 120,
+        gravity: 0.20
       },
-      edges: a.data.links
-    }]
+      edges: this.state.data.links
+    }]}
   }
 };
 
@@ -144,17 +151,20 @@ export default class Graph extends Component {
       top:"100px",
       left: "auto",
       width: "80vw",
-      height: "80vh"
+      height: "80vh",
+      display: "flex",
+      flexDirection : "column"
     }
     
     return (
       <div className='examples'>
+      {console.log(this.state.name)}
         <div className='parent'>
         {
           (this.state.data === null || this.getOption() === null) ? <div> </div> :
           <ReactEcharts
             option={this.getOption()}
-            style={{color:"white",height: '700px', width: '100%'}}
+            style={{color:"white",height: '90vh', width: '100%'}}
             className='react_for_echarts'
             onEvents={onEvents} 
             />
@@ -177,10 +187,13 @@ export default class Graph extends Component {
           timeout: 500,
         }}
       >
+      {/* {console.log(this.state.name)} */}
         <Fade in={this.state.open}>
-          <div style={stylePaper}>
+          <div style={stylePaper} >
             <h2 id="spring-modal-title">{this.state.name}</h2>
-            <Radar/>
+            <Radar username={this.state.name}/>
+            <Button id="button1" style={{position: "fixed", top:"80vh", left:"75vw"}}  variant="contained" color="primary"> Redirect to github </Button>
+            <Button style={{position: "fixed", top:"75vh", left:"75vw", width:"190px"}}  variant="contained" color="primary"> Search code </Button>
           </div>
         </Fade>
       </Modal>
