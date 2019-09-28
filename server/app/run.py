@@ -6,7 +6,7 @@ from passlib.apps import custom_app_context as pwd_context
 from itsdangerous import (TimedJSONWebSignatureSerializer
                           as Serializer, BadSignature, SignatureExpired)
 from flask_login import (login_user,logout_user, LoginManager, UserMixin, current_user)
-from server.app.config import auth
+from server.app.config import auth, search_data
 from server.app.dashboard import dashboard
 from server.app.user import user
 from flask_cors import CORS
@@ -137,16 +137,28 @@ def logout():
     return "logout page"
 
 
-@app.route('/weights', methods=['GET'])
+@app.route('/weights', methods=['POST'])
 # @auth.login_required
 def get_weights():
-    if not request.args or 'email' not in request.args:
+    if not request.json or 'email' not in request.json:
         abort(400)
-    email = request.args.get('email')
+    email = request.json.get('email')
+    print(email)
     user = User.query.filter_by(username=email).first()
     if not user:
         abort(400)
+    print({'weights': user.weights, 'preferedName': user.preferedName})
     return jsonify({'weights': user.weights, 'preferedName': user.preferedName})
+
+@app.route('/search', methods=['GET'])
+# @auth.login_required
+def search():
+    if not request.args or 'query' not in request.args:
+        abort(400)
+    query = request.args.get('query')
+    if query not in search_data:
+        abort(400)
+    return jsonify(search_data[query])
 
 
 @app.route('/api/token')

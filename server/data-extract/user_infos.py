@@ -1,5 +1,6 @@
 from github import Github
 import pymysql
+import time
 
 db = pymysql.connect(host='localhost',
                      port=13306,
@@ -10,10 +11,22 @@ db = pymysql.connect(host='localhost',
 
 cursor = db.cursor()
 
+def get_short_user_name():
+    g = Github("16b13aef930a91adae41847aec7e88167d7fb5a3")
+    with open("name_map.txt", "r") as tt:
+        tmp = list(tt)
+    user_tmp = [i.split("->")[0][:-1] for i in tmp]
+    print(user_tmp)
+    with open("user_profile.txt", "w") as txt:
+        for row in tmp:
+            user_name = row.split("->")[0][:-1]
+            url = row.split("->")[1][1:]
+            txt.write("%s -> %s\n" % (user_name, url.replace("https://api.github.com/users/", "https://github.com/")))
+    return
 
 def get_user_infos():
     db.ping(reconnect=True)
-    g = Github("608e938ca68704dffac199b91ac3be66507e2518")
+    g = Github("b259ad9fe82e2db0200711d22333bc1dfdaa5a41")
     with open("user_name.txt", "r") as txt_file:
         user = list(txt_file)
     user = [name.replace("\n", "") for name in user[102:103]]
@@ -52,4 +65,4 @@ def get_user_infos():
 
 
 if __name__ == "__main__":
-    get_user_infos()
+    get_short_user_name()
