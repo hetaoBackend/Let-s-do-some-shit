@@ -16,7 +16,7 @@ export default class SearchCode extends Component {
             email: "",
             password: "",
             data: null,
-
+            fuck: "",
         };
     }
     onChange = e => {
@@ -38,6 +38,7 @@ export default class SearchCode extends Component {
                     communicationSkill: this.state.communicationSkill,
                     innovationProcentage: this.state.innovationProcentage,
                     adaptability: this.state.adaptability,
+                    
 
             },
           }).then((e) => {
@@ -71,13 +72,14 @@ export default class SearchCode extends Component {
                     query: this.state.email
             },
           }).then((ee) => {
-            //   console.log(e.data);
-              this.state.data = ee;
+              console.log(ee.data);
+              this.setState({["fuck"]: ee.data});
             //   setCookie("token", e.data.token, 10);
           }
           ).catch(function (error) {
             console.log(error);
           });
+          console.log(this.state.fuck.link);
     }
     render() {
 
@@ -92,8 +94,8 @@ export default class SearchCode extends Component {
                             placeholder="Code" />
                        
                         </div>
-                        <Card>
-                            {this.state.data != null}
+                        <Card style={{position:"fixed", top:"30vh", width:"60vw", height:"20vw", left:"35vh", zIndex:"10"}}>
+                            {(this.state.fuck !== null && this.state.fuck !== undefined && this.state.fuck !== "") ? this.state.fuck.link : "Code will be here" }
                         </Card>
                       
                         <Button onClick={ () => {this.func(); console.log(this.state.show)} } id="button2" style={{position: "fixed", top:"70vh", left:"75vw", width:"190px"}}  variant="contained" color="primary"> Search </Button>
