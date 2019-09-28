@@ -95,7 +95,7 @@ def new_user():
     projectEngagement = request.json.get('projectEngagement')
     communicationSkill = request.json.get('communicationSkill')
     innovationProcentage = request.json.get('innovationProcentage')
-    adaptability = request.json.get(' ')
+    adaptability = request.json.get('adaptability')
     print(email, password, preferedName, technicalSkill, projectEngagement, communicationSkill, innovationProcentage, adaptability)
     if preferedName is None or password is None or email is None or technicalSkill is None or projectEngagement is None or communicationSkill is None or innovationProcentage is None or adaptability is None:
         abort(400)    # missing arguments
@@ -168,14 +168,14 @@ def get_weights():
     print({'weights': user.weights, 'preferedName': user.preferedName})
     return jsonify({'weights': user.weights, 'preferedName': user.preferedName})
 
-@app.route('/search', methods=['GET'])
+@app.route('/search', methods=['POST'])
 # @auth.login_required
 def search():
-    if not request.args or 'query' not in request.args:
+    if not request.json or 'query' not in request.json:
         abort(400)
-    query = request.args.get('query')
+    query = request.json.get('query')
     if query not in search_data:
-        abort(400)
+        return jsonify({"code":"", "description":"", "link":""})
     return jsonify(search_data[query])
 
 

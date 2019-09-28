@@ -6,9 +6,9 @@ let's do some shit together
 **For BizReach World Hackathon**
 
 # Introtuction
-For the Hiring Recruiter, it is very hard to find a suitable software engineer for the company, and it's not effective to find talented dev in a specific fields, such as The BizReach encounter a technical problem with Elasticsearch, however, I have not idea where the elasticsearch expert are.
+**Great engineers for great companies!**
 
-Therefore, we develop this website for HR, for recruiting more and more talents.
+For the Hiring Recruiter, it is very hard to find a suitable software engineer for the company, and it's not effective to find talented developer in a specific fields. For example, when The BizReach encounter a technical problem with Elasticsearch, we may have no idea where the elasticsearch expert are. Our product will measure a developer in five dimensions(**technical, communication, innovation, engagement, diversity**), and help you find the most professional engineers.
 
 ## Idea
 - Account System
@@ -36,14 +36,14 @@ Therefore, we develop this website for HR, for recruiting more and more talents.
 
 ## Appeal point
 
-- Relation Display
-- use nlp to understand PR introduction
-- code style/quality analysis
-- PageRank
-- similar dev recommend
-- category filter
+- Relation Display by modern frontend framework and fancy UI.
+- Use NLP techniques to understand PR introduction, and the result is used to generate the communication score for developer.
+- Code style/quality analysis
+- PageRank based on github relationship
+- Similar developer recommendation based on graph embedding techniques.
+- Category filter for recruiter's convenience to find suitable engineers.
 
 # Demo
 
-# Presentation Slide
- - [link](https://docs.google.com/presentation/d/1zKMmj1FaA4kzSX1jQvip9nb_POOsSZkilnkBhllwwRw/edit?usp=sharing)
+# Presentation Slides
+ - [Slides](https://docs.google.com/presentation/d/1zKMmj1FaA4kzSX1jQvip9nb_POOsSZkilnkBhllwwRw/edit?usp=sharing)
