@@ -7,5 +7,5 @@ CREATE TABLE `commit` (
   `repo` varchar(100) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE KEY `commit_commit_sha_uindex` (`commit_sha`)
-) ENGINE=InnoDB AUTO_INCREMENT=8138 DEFAULT CHARSET=utf8
+) ENGINE=InnoDB AUTO_INCREMENT=12712 DEFAULT CHARSET=utf8
 

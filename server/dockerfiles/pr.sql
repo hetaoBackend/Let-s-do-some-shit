@@ -7,6 +7,7 @@ CREATE TABLE `pr` (
   `is_merged` varchar(50) NOT NULL DEFAULT 'False',
   `repo` varchar(100) NOT NULL DEFAULT '',
   `status` varchar(50) NOT NULL,
+  `pr_score` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `pr_merge_commit_sha_uindex` (`merge_commit_sha`)
 ) ENGINE=InnoDB AUTO_INCREMENT=335 DEFAULT CHARSET=utf8

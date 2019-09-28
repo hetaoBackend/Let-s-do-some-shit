@@ -12,12 +12,12 @@ db = pymysql.connect(host='localhost',
 cursor = db.cursor()
 
 def get_commit_infos():
-    g = Github("efaebbac43363c18b27df15b444933652c0d6c95")
+    g = Github("d1fc35107b9be23d0208cbe6628e65312a83a5a6")
     repos = []
     # repos.append(g.get_repo("elastic/elasticsearch-hadoop"))
     repos.append(g.get_repo("elastic/elasticsearch"))
     # repos.append(g.get_repo("elastic/elasticsearch-metrics-reporter-java"))
-    offset = 96
+    offset = 202
     for repo in repos:
         commits = repo.get_commits()
         for i in range(offset, offset+50):
