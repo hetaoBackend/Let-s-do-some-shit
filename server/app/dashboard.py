@@ -38,7 +38,7 @@ def get_user_list():
             continue
         # ToDo: how to calculate the value
         value = int(res[0]*5+res[1]+res[3]*2)
-        test.nodes.append({"name": user_name, "value": value, "category": 0})
+        test.nodes.append({"name": user_name, "value": value, "symbolSize": 5+ (5+ value//5)%20, "category": 0})
         _dict[user_name] = res[2].split(",")
         demo_user.append(user_name)
 
@@ -54,7 +54,7 @@ def get_user_list():
             continue
         # ToDo: how to calculate the value
         value = int(res[0] * 10 + res[1])
-        test.nodes.append({"name": user_name, "value": value, "category": 1})
+        test.nodes.append({"name": user_name, "value": value, "symbolSize": 5+ (5+ value//5)%20, "category": 1})
         _dict[user_name] = res[2].split(",")
         demo_user.append(user_name)
 
@@ -70,7 +70,7 @@ def get_user_list():
             continue
         # ToDo: how to calculate the value
         value = int(res[0] * 10 + res[1])
-        test.nodes.append({"name": user_name, "value": value, "category": 2})
+        test.nodes.append({"name": user_name, "value": value, "symbolSize":  5+ (5+ value//5)%20, "category": 2})
         _dict[user_name] = res[2].split(",")
         demo_user.append(user_name)
     print("The number of demo_user is %s" % len(demo_user))

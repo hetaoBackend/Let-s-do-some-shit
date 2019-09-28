@@ -6,7 +6,9 @@ let's do some shit together
 **For BizReach World Hackathon**
 
 # Introtuction
+For the Hiring Recruiter, it is very hard to find a suitable software engineer for the company, and it's not effective to find talented dev in a specific fields, such as The BizReach encounter a technical problem with Elasticsearch, however, I have not idea where the elasticsearch expert are.
 
+Therefore, we develop this website for HR, for recruiting more and more talents.
 ## Idea
 
 ## Technologies
@@ -18,6 +20,7 @@ let's do some shit together
 ### Backend
   - Flask
   - MySql
+  - Docker & Docker-compose
   - Style Check for code
 
 ### Machine Learning
