@@ -1,0 +1,115 @@
+James Rodewig 0 17 51 222 342 26514 63
+Miguel Algorri 2 13 1 0 2 0 74
+Ramon Rosa da Silva 17 33 1 0 3 0 74
+James Baiera 40 13 3 348 7 81881 56
+Chuanyu Chen 0 19 1 1 3 45 69
+Alexander Kazakov 11 13 2 0 3 0 26
+David Turner 91 29 1 279 6 473831 20
+Alan Woodward 14 12 5 77 14 23166 41
+Yannick Welsch 18 10 3 184 11 166931 57
+Jim Ferenczi 43 10 2 170 8 47822 20
+Przemyslaw Gomulka 0 12 9 55 17 10834 39
+Dimitris Athanasiou 4 5 2 88 8 43743 48
+Rory Hunter 22 59 3 10 11 2630 42
+Marios Trivyzas 12 5 3 126 14 42506 54
+Henning Andersen 1 2 4 66 16 8112 33
+Alpar Torok 2 28 9 280 36 153542 31
+Jason Tedor 139 38 1 449 4 98012 20
+Michael Basnight 29 49 2 47 12 16054 69
+Nhat Nguyen 334 96 4 325 17 87597 61
+Lisa Cawley 8 32 9 217 41 26850 45
+Luca Cavanna 142 11 6 131 21 22634 31
+Albert Zaharovits 3 20 5 80 20 24944 43
+David Roberts 133 147 3 150 15 35795 37
+Martijn van Groningen 110 13 2 258 4 70116 75
+István Zoltán Szabó 1 10 4 46 15 6143 30
+Tim Brooks 23 1 3 122 13 35390 39
+Gordon Brown 20 15 2 95 9 45693 73
+Jack Conradson 8 3 2 83 8 38553 20
+Hendrik Muhs 10 31 4 74 15 33787 30
+Przemysław Witek 4 4 2 50 8 14741 82
+Tomas Della Vedova 418 105 1 8 1 160 20
+Daniel Mitterdorfer 67 27 1 37 2 1813 20
+Mayya Sharipova 39 9 6 67 18 15639 50
+Benjamin Trent 41 20 5 250 19 75803 43
+Dan Hermann 18 27 1 1 2 31 20
+jesinity 1 40 1 0 1 0 66
+Ioannis Kakavas 147 5 6 129 26 30101 20
+weizijun 9 15 1 4 1 119 69
+Howard 2214 21 4 0 7 0 20
+Costin Leau 212 20 4 1530 19 218042 41
+Mark Vieira 56 20 2 77 3 11944 54
+Przemko Robakowski 0 29 1 1 3 11 36
+Mark Tozzi 17 23 4 7 12 5079 57
+Andrew Naguib 23 12 1 0 2 0 20
+Takuya Kajiwara 3 21 1 0 2 0 57
+Jake Landis 68 110 2 73 9 11782 50
+SuXingLee 9 6 1 0 2 0 20
+Ryan Ernst 58 23 2 197 9 64864 82
+Adrien Grand 182 22 2 59 6 13994 20
+Hirofumi Kawasaki 4 13 1 0 3 0 74
+Larry Gregory 5 38 1 0 1 0 20
+Rob Waight 1 29 2 0 9 0 50
+Armin Braun 57 56 6 400 26 50268 42
+David Kyle 6 34 1 96 1 27764 60
+Zachary Tong 246 50 4 100 15 30230 33
+Antonin Delpeuch 92 41 1 0 2 0 20
+Andrey Ershov 9 7 2 67 7 99777 59
+Enrico Zimuel 556 185 1 1 1 216 20
+Vega 2073 13 1 1 1 20 83
+Tim Vernum 12 12 3 114 10 32658 20
+Yogesh Gaikwad 1 29 3 64 13 24531 48
+hanbj 2 9 2 1 2 21 20
+Hassan Alam 14 30 1 0 1 0 78
+Dipika 15 34 1 0 2 0 20
+LHearen 42 50 1 2 2 8 83
+Vadim Dalecky 399 255 1 0 1 0 71
+William Brafford 0 5 1 6 2 591 20
+Mitch 6763 99 1 0 3 0 38
+Nikita Glashenko 13 18 2 5 7 774 78
+David Pilato 467 145 3 4 6 35 26
+Erik Jarleberg 0 2 1 0 1 0 73
+Vishlesh Patel 1 37 1 0 3 0 37
+Amogh Jahagirdar 3 30 1 0 4 0 74
+Colin Goodheart-Smithe 0 0 1 62 3 248255 20
+Nick Knize 30 14 5 25 22 23849 32
+Jay Modi 32 9 1 96 4 25954 20
+Christos Soulios 1 4 1 5 3 3400 20
+Daisuke Harada 9 18 1 0 1 0 20
+Mariha Kozinska 0 4 1 0 1 0 83
+Neale Ferguson 24 33 1 0 1 0 20
+Julie Tibshirani 129 5 1 132 2 24567 20
+Ojas gulati 14 48 1 2 5 434 20
+Cameron Nemo 10 78 1 0 2 0 79
+James Dorfman 6 5 1 0 2 0 20
+Hicham Mallah 3 17 1 2 1 203 82
+Tal Levy 18 100 1 162 3 140112 30
+Andrei Stefan 11 34 2 103 7 21646 84
+Jack Desert 14 69 1 0 2 0 80
+Vadim TSesko 45 37 1 0 1 0 76
+Kumar Shubham 45 33 1 0 10 0 79
+Sherry Ger 2 10 1 0 2 0 20
+Russ Cam 69 41 1 7 8 69 20
+Glen Smith 85 34 1 1 2 2 20
+Mingeun Kim 87 10 1 0 2 0 74
+Olli 120 8 1 0 2 0 20
+Christoph Büscher 41 20 1 170 4 17869 83
+Julio Valcarcel 7 15 1 0 1 0 67
+Emmanuel DEMEY 92 158 1 1 4 14 72
+Ivange Larry 41 118 1 0 1 0 52
+Himanshu Pandey 8 43 1 0 2 0 20
+yunchenglu 1 1 1 0 2 0 60
+Like 16590 242 4 10 8 1279 47
+Thiago Souza 30 36 1 1 2 2 20
+Shuaib Yunus 56 32 1 0 1 0 20
+Roeland van Batenburg 4 8 1 0 2 0 20
+Vladimir Dolzhenko 19 15 1 20 3 10438 72
+Mirko Jotic 13 36 1 1 2 782 67
+한우람 1 9 3 0 9 0 39
+Stuart Cam 14 6 1 1 2 82 64
+Ivan Brusic 11 37 1 0 2 0 38
+Tyler Langlois 52 77 1 0 4 0 78
+Ray Elenteny 2 12 1 0 1 0 20
+Matt Franklin 11 7 1 0 1 0 20
+Gerald Quintana 12 54 1 0 1 0 20
+Lars Martin 8 21 1 0 1 0 20

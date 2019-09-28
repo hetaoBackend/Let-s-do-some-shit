@@ -31,12 +31,3 @@ class obj(object):
         return {'type': self.type, 'categories': self.categories, 'nodes': self.nodes, 'links': self.links}
 
 
-# @app.route('/user', methods=['GET'])
-# def get_user():
-#     if not request.args or 'user_name' not in request.args:
-#         # 没有指定id则返回全部
-#         return jsonify(test_datas)
-#     else:
-#         user_name = request.args['user_name']
-#         res = test_datas[user_name]
-#         return jsonify(res) if res else jsonify({'result': 'not found'})
