@@ -95,7 +95,7 @@ def new_user():
     projectEngagement = request.json.get('projectEngagement')
     communicationSkill = request.json.get('communicationSkill')
     innovationProcentage = request.json.get('innovationProcentage')
-    adaptability = request.json.get(' ')
+    adaptability = request.json.get('adaptability')
     print(email, password, preferedName, technicalSkill, projectEngagement, communicationSkill, innovationProcentage, adaptability)
     if preferedName is None or password is None or email is None or technicalSkill is None or projectEngagement is None or communicationSkill is None or innovationProcentage is None or adaptability is None:
         abort(400)    # missing arguments
