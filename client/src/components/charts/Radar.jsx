@@ -5,7 +5,7 @@ import { Input, Typography, Button, CardContent, Card, Slider } from '@material-
 import axios from "axios"; 
 import ReactEcharts from 'echarts-for-react';  // or var ReactEcharts = require('echarts-for-react');
 import { getCookie } from '../CookieFunctions';
-import SearchCode from "../SearchCode";
+import SearchCode from "../SearchCode"
 
 export default class Radar extends Component {
 
@@ -183,7 +183,6 @@ export default class Radar extends Component {
                 className='react_for_echarts'
                 onEvents={onEvents} 
             />
-
             : <div><SearchCode/></div>
             }
            
