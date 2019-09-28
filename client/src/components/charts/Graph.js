@@ -21,7 +21,8 @@ export default class Graph extends Component {
       open: false,
       name: "",
       data: "{}",
-      weights: ""
+      weights: "",
+      open2: false,
     }
     this.handleClose = this.handleClose.bind(this);
     this.onChartClick = this.onChartClick.bind(this);
@@ -87,6 +88,7 @@ export default class Graph extends Component {
   }
 };
 
+
   onChartClick (e) {
     console.log(e);
     this.setState({["name"]: e.data.name});
@@ -95,6 +97,9 @@ export default class Graph extends Component {
 
   handleClose = () => {
       this.setState({["open"]: false});
+  };
+  handleClose2 = () => {
+    this.setState({["open2"]: false});
   };
 
   render() {
@@ -193,7 +198,31 @@ export default class Graph extends Component {
             <h2 id="spring-modal-title">{this.state.name}</h2>
             <Radar username={this.state.name}/>
             <Button id="button1" style={{position: "fixed", top:"80vh", left:"75vw"}}  variant="contained" color="primary"> Redirect to github </Button>
-            <Button style={{position: "fixed", top:"75vh", left:"75vw", width:"190px"}}  variant="contained" color="primary"> Search code </Button>
+          </div>
+        </Fade>
+      </Modal>
+
+
+      <Modal
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+        aria-labelledby="spring-modal-title"
+        aria-describedby="spring-modal-description" 
+        open={this.state.open2}
+        onClose={this.handleClose2}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+      {/* {console.log(this.state.name)} */}
+        <Fade in={this.state.open2}>
+          <div style={stylePaper} >
+            <h2 id="spring-modal-title">Muie</h2>
           </div>
         </Fade>
       </Modal>

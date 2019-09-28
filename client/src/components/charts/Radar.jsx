@@ -5,7 +5,7 @@ import { Input, Typography, Button, CardContent, Card, Slider } from '@material-
 import axios from "axios"; 
 import ReactEcharts from 'echarts-for-react';  // or var ReactEcharts = require('echarts-for-react');
 import { getCookie } from '../CookieFunctions';
-
+import SearchCode from "../SearchCode"
 
 export default class Radar extends Component {
 
@@ -18,7 +18,8 @@ export default class Radar extends Component {
             data: null,
             weights: null,
             username: this.props.username,
-            url: null
+            url: null,
+            show: true,
         };
     }
 
@@ -163,26 +164,28 @@ export default class Radar extends Component {
             'legendselectchanged': this.onChartLegendselectchanged
           }
       
-        if (this.getOption() !== null) 
+        if (this.getOption() !== null) {
           document.querySelector("#button1").addEventListener("click", () => { window.location.href = this.state.url; })
+        // this.setState({ ["open"]: false });
+        
+        }
+        console.log(this.state.show);
         return (
             
             <div style={{display:"flex", flexDirection:"row"}}>
-            {/* <div>
-            <h1>
-                Developer Radar
-            </h1>
-            </div> */}
-            {(this.getOption() === null) ? <div> </div> :
+            
+            <Button onClick={ () => {this.setState ({["show"]: false}); console.log(this.state.show)} } id="button2" style={{position: "fixed", top:"75vh", left:"75vw", width:"190px"}}  variant="contained" color="primary"> Search code </Button>
+
+            {this.state.show === true ? (this.getOption() === null) ? <div> </div> :
             <ReactEcharts
                 option={this.getOption()}
                 style={{padding:"10px", color:"white",height: '700px', width: '50%'}}
                 className='react_for_echarts'
                 onEvents={onEvents} 
             />
+            : <div><SearchCode/></div>
             }
-            {/* <h1> some list or chart here</h1> */}
-            {/* create some charts in there */}
+           
 
             </div>
         );
