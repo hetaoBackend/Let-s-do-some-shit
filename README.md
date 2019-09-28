@@ -7,6 +7,7 @@ let's do some shit together
 
 # Introtuction
 **Great engineers for great companies!**
+
 For the Hiring Recruiter, it is very hard to find a suitable software engineer for the company, and it's not effective to find talented developer in a specific fields. For example, when The BizReach encounter a technical problem with Elasticsearch, we may have no idea where the elasticsearch expert are. Our product will measure a developer in five dimensions(**technical, communication, innovation, engagement, diversity**), and help you find the most professional engineers.
 
 ## Idea
