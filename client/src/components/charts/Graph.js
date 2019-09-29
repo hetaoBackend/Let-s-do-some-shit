@@ -35,7 +35,7 @@ export default class Graph extends Component {
     axios({
       method: 'GET',
       responseType:'application/json',
-      url: "http://10.0.50.126:5000/dashboard/",
+      url: "http://127.0.0.1:5000/dashboard/",
     }).then((e) => {
         console.log(e.data);
         a = e.data;

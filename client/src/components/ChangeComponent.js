@@ -34,7 +34,7 @@ export default class ChangeComponent extends Component {
         axios({
             method: 'POST',
             responseType:'application/json',
-            url: "http://10.0.50.126:5000/profile/change",
+            url: "http://127.0.0.1:5000/profile/change",
             data: {
                     email : getCookie("username"),
                     technicalSkill: this.state.technicalSkill,

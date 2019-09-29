@@ -12,8 +12,8 @@ For the Hiring Recruiter, it is very hard to find a suitable software engineer f
 
 ## Idea
 - Account System
-- Ml to extract some features
-- dynamic chart to show the relationship between talents
+- ML to extract some features
+- Dynamic chart to show the relationship between talents
 - Performance metrics of the dev
 
 ## Technologies

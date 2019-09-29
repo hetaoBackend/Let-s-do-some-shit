@@ -28,7 +28,7 @@ export default class SearchCode extends Component {
         axios({
             method: 'POST',
             responseType:'application/json',
-            url: "http://10.0.50.126:5000/register",
+            url: "http://127.0.0.1:5000/register",
             data: {
                     email : this.state.email,
                     password: this.state.password,
@@ -60,14 +60,14 @@ export default class SearchCode extends Component {
         // ################################
     }
     func(e) {
-        http://10.0.50.126:5000/search?query=connect to mongodb
+        http://127.0.0.1:5000/search?query=connect to mongodb
 
         // console.log(this.state);
         console.log(this.state.email);
         axios({
             method: 'POST',
             responseType:'application/json',
-            url: "http://10.0.50.126:5000/search",
+            url: "http://127.0.0.1:5000/search",
             data: {
                     query: this.state.email
             },

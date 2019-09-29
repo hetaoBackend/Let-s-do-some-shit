@@ -64,7 +64,7 @@ If the substring does not occur, an empty string is returned.
                                   The depth of the node
 @return the depth of the node
 """},
-"add an event listene": {"code":
+"add an event listener": {"code":
                            """
                            public void addEventListener(EventType eventType, Consumer<PrimitiveEvent> listener) {
     executor.execute(() -> eventListeners.computeIfAbsent(eventType.canonicalize(), e -> Sets.newLinkedHashSet()).add(listener));

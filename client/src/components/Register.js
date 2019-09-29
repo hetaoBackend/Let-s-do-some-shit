@@ -34,7 +34,7 @@ export default class Register extends Component {
         axios({
             method: 'POST',
             responseType:'application/json',
-            url: "http://10.0.50.126:5000/register",
+            url: "http://127.0.0.1:5000/register",
             data: {
                     email : this.state.email,
                     password: this.state.password,

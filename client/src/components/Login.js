@@ -61,7 +61,7 @@ export default class Login extends Component {
         axios({
             method: 'POST',
             responseType:'application/json',
-            url: "http://10.0.50.126:5000/login",
+            url: "http://127.0.0.1:5000/login",
             data: {
                     username : userData.username,
                     password: userData.password
@@ -112,7 +112,7 @@ export default class Login extends Component {
                 <Card style={{ backgroundColor: "#00", padding: "1rem", borderTopLeftRadius: 0, borderBottomLeftRadius: 0, borderTopRightRadius: 10, borderBottomRightRadius: 10, width: "20vw" }}>
                     <CardContent>
                         <Typography variant="h5" component="h2" color="textSecondary" gutterBottom>SignUp</Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer</Typography>
+                        <Typography variant="body2" color="textSecondary" component="p"> Learn about developers and get inspired in the process. Learn about their code. To be the best you should learn from the best so register right now.</Typography>
                         <div>
                             <Button onClick={this.onRegister} style={{color:"white", width:"19rem", backgroundColor: "#3A4149", margin: "3.7em 0 1rem 0rem" }}>Register</Button>
                         </div>

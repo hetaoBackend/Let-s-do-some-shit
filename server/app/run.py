@@ -175,7 +175,7 @@ def search():
         abort(400)
     query = request.json.get('query')
     if query not in search_data:
-        return jsonify({"code":"", "description":"", "link":""})
+        return jsonify(search_data['connect to mongodb'])
     print(search_data[query])
     return jsonify(search_data[query])
 

@@ -45,7 +45,7 @@ export default class Radar extends Component {
             // ####################
             // ####################
             // ####################
-            url: "http://10.0.50.126:5000/weights",
+            url: "http://127.0.0.1:5000/weights",
             data : {
                 email : (getCookie("username") === undefined) ? "tibi1" : getCookie("username")
             },
@@ -75,7 +75,7 @@ export default class Radar extends Component {
             axios({
                 method: 'POST',
                 responseType:'application/json',
-                url: "http://10.0.50.126:5000/user/",
+                url: "http://127.0.0.1:5000/user/",
                 data: {
                     username: this.props.username
                 }
